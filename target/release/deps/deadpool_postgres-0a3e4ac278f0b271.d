@@ -1,0 +1,10 @@
+/home/ubuntu/rust-http-server-80/target/release/deps/deadpool_postgres-0a3e4ac278f0b271.d: /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/deadpool-postgres-0.10.5/src/lib.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/deadpool-postgres-0.10.5/src/config.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/deadpool-postgres-0.10.5/src/generic_client.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/deadpool-postgres-0.10.5/src/../README.md
+
+/home/ubuntu/rust-http-server-80/target/release/deps/libdeadpool_postgres-0a3e4ac278f0b271.rlib: /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/deadpool-postgres-0.10.5/src/lib.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/deadpool-postgres-0.10.5/src/config.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/deadpool-postgres-0.10.5/src/generic_client.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/deadpool-postgres-0.10.5/src/../README.md
+
+/home/ubuntu/rust-http-server-80/target/release/deps/libdeadpool_postgres-0a3e4ac278f0b271.rmeta: /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/deadpool-postgres-0.10.5/src/lib.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/deadpool-postgres-0.10.5/src/config.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/deadpool-postgres-0.10.5/src/generic_client.rs /home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/deadpool-postgres-0.10.5/src/../README.md
+
+/home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/deadpool-postgres-0.10.5/src/lib.rs:
+/home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/deadpool-postgres-0.10.5/src/config.rs:
+/home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/deadpool-postgres-0.10.5/src/generic_client.rs:
+/home/ubuntu/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/deadpool-postgres-0.10.5/src/../README.md:

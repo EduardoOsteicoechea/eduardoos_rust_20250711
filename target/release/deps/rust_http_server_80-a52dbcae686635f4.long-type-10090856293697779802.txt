@@ -1,0 +1,1 @@
+fn() -> impl Future<Output = impl IntoResponse> {handler_404}: tower_service::Service<axum::http::Request<Body>>
