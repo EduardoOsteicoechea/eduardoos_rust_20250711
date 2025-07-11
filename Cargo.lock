@@ -1779,6 +1779,13 @@ dependencies = [
 [[package]]
 name = "web_pages"
 version = "0.1.0"
+dependencies = [
+ "webcomponents",
+]
+
+[[package]]
+name = "webcomponents"
+version = "0.1.0"
 
 [[package]]
 name = "which"

@@ -1,0 +1,68 @@
+pub fn page_header_001(root_path:&str,component_id:&str) -> String {
+    let component_name = "page_header_001";
+    let full_root_path = format!("https://eduardoos.com/{}",root_path);
+    format!(
+        r#"
+        <div
+        id="{COMPONENT_ID}_{COMPONENT_NAME}"
+        class="{COMPONENT_NAME}"
+        >
+            <a
+            id=""
+            class="{COMPONENT_NAME}_logo_anchor_container"
+            href="https://eduardoos.com/{ROOT_PATH}"
+            >
+                <div
+                id=""
+                class="{COMPONENT_NAME}_logo_anchor_container_image_container"
+                >
+                    <img 
+                    id=""
+                    class="{COMPONENT_NAME}_logo_anchor_container_image_container_image"
+                    src="personal_photo_white_720x720.webp"
+                    alt="Eduardo's photo"
+                    >
+                </div>
+            </a>
+
+            <nav
+            id=""
+            class="{COMPONENT_NAME}_navigation"
+            >
+                <ol
+                id=""
+                class="{COMPONENT_NAME}_navigation_list"
+                >
+                    <li
+                    id=""
+                    class="{COMPONENT_NAME}_navigation_list_item"
+                    >
+                        <a
+                        id=""
+                        class="{COMPONENT_NAME}_navigation_list_item_anchor"
+                        href="{ROOT_PATH}home"
+                        >
+                            Home
+                        </a>
+                    </li>
+                    <li
+                    id=""
+                    class="{COMPONENT_NAME}_navigation_list_item"
+                    >
+                        <a
+                        id=""
+                        class="{COMPONENT_NAME}_navigation_list_item_anchor"
+                        href="{ROOT_PATH}contact"
+                        >
+                            Contact
+                        </a>
+                    </li>
+                </ol>
+            </nav>
+        </div>
+        "#,
+        COMPONENT_NAME=component_name,
+        COMPONENT_ID=component_id,
+        ROOT_PATH=full_root_path
+    )   
+}
