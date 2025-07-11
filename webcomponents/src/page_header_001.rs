@@ -21,6 +21,7 @@ pub fn page_header_001(root_path:&str,component_id:&str) -> String {
                     class="{COMPONENT_NAME}_logo_anchor_container_image_container_image"
                     src="personal_photo_white_720x720.webp"
                     alt="Eduardo's photo"
+                    height="100%"
                     >
                 </div>
             </a>
