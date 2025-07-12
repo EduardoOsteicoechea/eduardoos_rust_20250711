@@ -3,14 +3,16 @@ pub fn page_header_001(root_path:&str,component_id:&str) -> String {
     let full_root_path = format!("https://eduardoos.com/{}",root_path);
     format!(
         r#"
+
         <div
         id="{COMPONENT_ID}_{COMPONENT_NAME}"
         class="{COMPONENT_NAME}"
         >
+
             <a
             id=""
             class="{COMPONENT_NAME}_logo_anchor_container"
-            href="https://eduardoos.com/{ROOT_PATH}"
+            href="https://eduardoos.com/"
             >
                 <div
                 id=""
@@ -25,6 +27,31 @@ pub fn page_header_001(root_path:&str,component_id:&str) -> String {
                     >
                 </div>
             </a>
+
+            <section
+            class="{COMPONENT_NAME}_key_information"            
+            >
+                <p>
+                    My name is Eduardo Osteicoechea
+                </p>
+                <p>
+                    I'm interested in creating the next generation of AI-driven software, moving AEC to unspoken levels of Efficiency.
+                </p>
+                <p>
+                    I'm a Liscenced Architect, Professional Web, Desktop, Cloud, AI Integrations & BIM Fullstack Developer, with a great interest in UI & UX design and ethics.
+                </p>
+                <p>
+                    This website showcases my profile, services and interests.
+                </p>
+                <p>
+                    Conctact me through this chanels:
+
+                </p>
+                
+                <a href="https://wa.me/584147281033"><button>WhatsApp</button></a>
+                <a href="mailto:eduardooost@gmail.com"><button>Email</button></a>
+
+            </section>
 
             <nav
             id=""
@@ -41,7 +68,7 @@ pub fn page_header_001(root_path:&str,component_id:&str) -> String {
                         <a
                         id=""
                         class="{COMPONENT_NAME}_navigation_list_item_anchor"
-                        href="{ROOT_PATH}home"
+                        href="{ROOT_PATH}"
                         >
                             Home
                         </a>
@@ -53,14 +80,18 @@ pub fn page_header_001(root_path:&str,component_id:&str) -> String {
                         <a
                         id=""
                         class="{COMPONENT_NAME}_navigation_list_item_anchor"
-                        href="{ROOT_PATH}contact"
+                        href="{ROOT_PATH}a_powerful_and_biblical_gospel"
                         >
-                            Contact
+                            A powerful and biblical gospel
                         </a>
                     </li>
                 </ol>
             </nav>
+
+
+
         </div>
+        <script src="page_header_001_activator_button.js"></script>
         "#,
         COMPONENT_NAME=component_name,
         COMPONENT_ID=component_id,

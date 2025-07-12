@@ -24,8 +24,6 @@ pub async fn retrieve_page_html_string() -> String {
             PAGE_CONTENT,
             page_header,
             r#"
-            <h1>Thanks Lord</h1>
-            <h2>Thnaks Jesus</h2>
             <script src="display_todo_tasks.js" defer></script>
             "#,
             PAGE_BOTTOM
