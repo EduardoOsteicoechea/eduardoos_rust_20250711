@@ -7,6 +7,7 @@ edition = "2024"
 members = [
         "web_pages",
         "api", "webcomponents",
+	"webpages"
 ]
 resolver = "2"
 
@@ -20,6 +21,7 @@ serde_json = "1.0"
 tower-http = { version = "0.5", features = ["fs"] }
 
 web_pages = {path = "web_pages"}
+webpages = {path="webpages"}
 api = {path="api"}
 
 deadpool-postgres = {version="0.10",features=["serde"]}

@@ -80,9 +80,9 @@ pub fn page_header_001(root_path:&str,component_id:&str) -> String {
                         <a
                         id=""
                         class="{COMPONENT_NAME}_navigation_list_item_anchor"
-                        href="{ROOT_PATH}a_powerful_and_biblical_gospel"
+                        href="{ROOT_PATH}reflecting_on_the_world_of_danger"
                         >
-                            A powerful and biblical gospel
+                            Reflecting on the world of danger
                         </a>
                     </li>
                 </ol>

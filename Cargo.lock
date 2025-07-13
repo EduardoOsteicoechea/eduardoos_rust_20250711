@@ -1179,6 +1179,7 @@ dependencies = [
  "tokio-postgres",
  "tower-http",
  "web_pages",
+ "webpages",
 ]
 
 [[package]]
@@ -1786,6 +1787,13 @@ dependencies = [
 [[package]]
 name = "webcomponents"
 version = "0.1.0"
+
+[[package]]
+name = "webpages"
+version = "0.1.0"
+dependencies = [
+ "webcomponents",
+]
 
 [[package]]
 name = "which"

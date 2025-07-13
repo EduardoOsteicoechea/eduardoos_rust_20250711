@@ -1,0 +1,59 @@
+article{
+	padding:20px;
+	display:flex;
+	flex-direction:column;
+	gap:15px;
+
+}
+                                                                                                            article ol{
+        list-style-position:inside;
+
+
+} 
+article ul{
+	list-style-position:inside;
+
+}
+
+
+article > ol{
+	display:flex;
+	flex-direction:column;
+	gap:50px;
+}
+article > ol > li{
+	margin: 0 0 20px 0;
+}
+
+article > ol > li > section{
+	display:flex;
+	flex-direction: column;
+	gap:35px;
+}
+
+
+article > ol > li > section > ol {
+	display:flex;
+	flex-direction:column;
+	gap:20px;
+}
+article > ol > li > section > ol > li{
+	display:flex;
+	flex-direction:column;
+	gap:10px;
+	padding: 0 0 0 20px;
+}
+
+article > ol > li > section > ol > li > div{
+	display: flex;
+	flex-wrap:wrap;
+	column-gap:5px;
+	row-gap:5px;
+
+	span{
+		padding: 5px 7px;
+		background: var(--cg_2);
+		border:solid 1px var(--cg_3);
+		border-radius:4px;
+	}
+}

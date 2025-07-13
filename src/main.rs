@@ -6,25 +6,31 @@ use axum::{
 };
 use std::{net::SocketAddr, path::PathBuf, env};
 use axum_server::tls_rustls::RustlsConfig;
-use web_pages::page_home::retrieve_page_html_string;
 use api::{
-    check_database_exists,
-    create_todo_tasks_table,
-    read_all_todo_tasks,
-    insert_todo_task,
+//    check_database_exists,
+  //  create_todo_tasks_table,
+//    read_all_todo_tasks,
+//    insert_todo_task,
     DatabaseCheckResult,
-    ApiError,
-    TodoTask,
+//    ApiError,
+//    TodoTask,
     NewTodoTask,
 };
-use deadpool_postgres::{Pool,Manager,Config,Runtime};
+//use deadpool_postgres::{Pool,Manager,Config,Runtime};
+use deadpool_postgres::{Pool,Manager,Runtime};
 use tokio_postgres::NoTls;
-use std::fmt;
+//use std::fmt;
 use serde_json;
 use tower_http::services::ServeDir;
 use axum::http::StatusCode;
 use axum::handler::HandlerWithoutStateExt;
 
+
+
+
+
+use web_pages::page_home::retrieve_page_html_string;
+use webpages::page_reflecting_on_the_world_of_danger_001::page_reflecting_on_the_world_of_danger_001_html;
 
 
 
@@ -69,6 +75,11 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .route("/api/create_todo_tasks_table",get(create_todo_tasks_table_handler))
         .route("/api/view_all_todo_tasks",get(view_all_todo_tasks_route_handler))
         .route("/api/create_todo_task",post(create_todo_task_route_handler))
+        
+
+        .route("/reflecting_on_the_world_of_danger",get(reflecting_on_the_world_of_danger_001_route_handler))
+        
+        
         .layer(Extension(dbpool))
         .fallback_service(static_files_service);
 
@@ -122,6 +133,11 @@ impl DatabaseEnvironmentModel{
 
 async fn page_home_handler() -> Html<String>{
     let a = retrieve_page_html_string().await;
+    Html(a)
+}
+
+async fn reflecting_on_the_world_of_danger_001_route_handler() -> Html<String>{
+    let a = page_reflecting_on_the_world_of_danger_001_html().await;
     Html(a)
 }
 
