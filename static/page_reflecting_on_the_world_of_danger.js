@@ -82,7 +82,7 @@ article_container.innerHTML = `
 <h2>We must prepare for tragedy by reflecting of the dimmension of Sin</h2>
 <ol>
 <li>
-	<h3>On God's Eyes, sin is so evil that deserves death<h3>
+	<h3>On God's Eyes, sin is so evil that deserves death</h3>
 	<p>According to God holliness, sin is so scandalous and evil, that requires a death penalty from a righteous arbit.</p>
 	<p>Therefore, we must fight and kill the idea that we are so good that deserve all protection from tragedy.</p>
 	<p>Tragedy is not a surprise for the clear thinker, the surprize is the fact that we are still alive
@@ -90,7 +90,20 @@ article_container.innerHTML = `
 	<p>We must pray to God for illumination from the Spirit and wise teachers that helps us develop a correct perspective of reality.</p>
 	<div><span>Gen.2.15-17</span><span>Rom.3.23</span></div>
 </li>
-<li></li>
+
+<li>
+	<h3>Fighthing the idea that the world is a good place and that people are God is paramount to handle reality</h3>
+	<p>Only when we understand that our countries are dammed nations at the edge of being destructed by God, and that we are in a vicious enemity with God, we can make sense when God planns and executes tragedy.</p>
+	<div><span>Sal.2</span><span>Sal.5.4</span><span>Sal.7.11</span></div>
+</li>
+<li>
+	<h3>Only humble and sober acceptance of our unwordinnes of life can prepare us to live in the moment of tragedy</h3>
+	<p>A strong doctrine of sin and creatureliness is what keep Job from apostasy.</p>
+	<p>Nonetheless, a deeper and hidden sense of blessing merit from Job, propelled him to sin against God in the midst of unspeakable suffering.</p>
+	<p>Expecting non-tragedy or reacting with anger towards God is a mark of ignoring the character of the true God</p>
+	<div><span>Job.1.13.22</span></div>
+	<div><span>Job.42.1-6</span></div>
+</li>
 </ol>
 </section></li>
 
