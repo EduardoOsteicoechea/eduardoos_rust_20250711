@@ -64,6 +64,74 @@ pub async fn check_database_exists(pool: &Pool, db_name: &str) -> Result<Databas
     })
 }
 
+#[derive(Debug, Serialize, Deserialize)]
+pub struct EduardoosArticle{
+    pub id:i32,
+    pub exists:bool,
+    pub content:String
+}
+pub async fn get_article_by_id_if_possible(pool:&Pool, article_id:&i32)->Result<EduardoosArticle, ApiError>{
+    let client:Client = pool.get().await?;
+    let query = r#"
+    SELECT
+        EXISTS(SELECT 1 FROM articles_001 WHERE id = $1) AS article_exists,
+        (SELECT article_content FROM articles_001 WHERE id = $1) AS article_content;
+    "#;
+    let row = client.query_one(query, &[&article_id]).await?;
+    let exists:bool = row.get("article_exists");
+    let article_option:Option<String> = row.get("article_content");
+    let content = if exists {
+        article_option.unwrap_or_default()
+    } else {
+        String::new()
+    };
+    Ok(EduardoosArticle{
+        id: *article_id,
+        exists,
+        content
+    })
+}
+#[derive(Debug,Serialize,Deserialize)]
+pub struct EduardoosArticleUpdate{
+    pub article_series_id:i32,
+    pub article_name:String,
+    pub article_content:String,
+}
+pub async fn update_article_by_id_if_possible(
+    pool:&Pool, 
+    article_id:&i32,
+    article_series_id:&i32,
+    article_name:&String,
+    article_content:&String,
+) -> Result<EduardoosArticleUpdate,ApiError>
+{
+    let client:Client = pool.get().await?;
+    
+    let sql = r#"
+    UPDATE 
+        articles_001
+    SET
+         article_series_id=$2
+        ,article_name=$3
+        ,article_content=$4
+    WHERE
+        id=$1
+    RETURNING
+        id, article_series_id, article_name, article_content;
+    "#;
+
+    let row = client.query_one(
+        sql, 
+        &[article_id, article_series_id, article_name, article_content]
+        ).await?;
+
+    Ok(EduardoosArticleUpdate{
+    article_series_id: row.get("article_series_id"),
+    article_name: row.get("article_name"),
+    article_content: row.get("article_content"),
+    })
+}
+
 pub async fn create_todo_tasks_table(pool: &Pool) -> Result<(), ApiError> {
     // Acquire a client connection from the pool.
     // The `?` operator will automatically convert `sqlx::Error` (e.g., PoolError) into `ApiError`.

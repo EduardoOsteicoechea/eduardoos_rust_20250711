@@ -1,0 +1,2 @@
+fn(Extension<deadpool::managed::Pool<Manager>>, axum::Json<ArticleUpdateRequest>) -> impl Future<Output = axum::Json<EduardoosArticleUpdate>> {articles_update_api_route_handler}
+fn(Extension<deadpool::managed::Pool<Manager>>, axum::Json<ArticleUpdateRequest>) -> impl Future<Output = axum::Json<EduardoosArticleUpdate>> {articles_update_api_route_handler}: Handler<_, _>

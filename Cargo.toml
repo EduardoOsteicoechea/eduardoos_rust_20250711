@@ -17,7 +17,10 @@ tokio = { version = "1", features = ["full"] }
 axum-server = { version = "0.6", features = ["tls-rustls"] }
 rustls = { version = "0.23", features = ["tls12"] }
 rustls-pemfile = "2.1"
-serde_json = "1.0"
+
+serde_json = "1.0.117" # <--- No 'derive' feature here, which is good
+serde = { version = "1.0.140", features = ["derive"] }
+
 tower-http = { version = "0.5", features = ["fs"] }
 
 web_pages = {path = "web_pages"}

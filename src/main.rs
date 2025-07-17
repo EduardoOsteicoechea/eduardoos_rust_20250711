@@ -3,6 +3,7 @@ use axum::{
     Router,
     response::{Html,Json, IntoResponse},
     Extension,
+    extract::{Path},
 };
 use std::{net::SocketAddr, path::PathBuf, env};
 use axum_server::tls_rustls::RustlsConfig;
@@ -15,6 +16,8 @@ use api::{
 //    ApiError,
 //    TodoTask,
     NewTodoTask,
+    EduardoosArticle,
+    EduardoosArticleUpdate,
 };
 //use deadpool_postgres::{Pool,Manager,Config,Runtime};
 use deadpool_postgres::{Pool,Manager,Runtime};
@@ -24,7 +27,7 @@ use serde_json;
 use tower_http::services::ServeDir;
 use axum::http::StatusCode;
 use axum::handler::HandlerWithoutStateExt;
-
+use serde::{Serialize, Deserialize};
 
 
 
@@ -75,10 +78,9 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .route("/api/create_todo_tasks_table",get(create_todo_tasks_table_handler))
         .route("/api/view_all_todo_tasks",get(view_all_todo_tasks_route_handler))
         .route("/api/create_todo_task",post(create_todo_task_route_handler))
-        
-
         .route("/reflecting_on_the_world_of_danger",get(reflecting_on_the_world_of_danger_001_route_handler))
-        
+        .route("/api/articles/:id",get(articles_api_route_handler))
+        .route("/api/articles/update",post(articles_update_api_route_handler))
         
         .layer(Extension(dbpool))
         .fallback_service(static_files_service);
@@ -140,6 +142,88 @@ async fn reflecting_on_the_world_of_danger_001_route_handler() -> Html<String>{
     let a = page_reflecting_on_the_world_of_danger_001_html().await;
     Html(a)
 }
+
+async fn articles_api_route_handler(Extension(pool):Extension<Pool>, Path(id):Path<i32>) -> Json<EduardoosArticle> {
+    let article_id_to_query = id;
+    match api::get_article_by_id_if_possible(&pool, &article_id_to_query).await{
+        Ok(article) => {
+            println!("Successfully retrieved article (exists: {}): {:?}", article.exists, article);
+            Json(article)
+        },
+        Err(e)=>{
+            Json(EduardoosArticle{
+                id:id,
+                exists:false,
+                content:e.to_string()
+            })
+        }
+    }
+}
+
+#[derive(Debug, Serialize, Deserialize)] // <--- ADD THIS LINE
+struct ArticleUpdateRequest{
+    access_key:String,
+    id:i32,
+    article_series_id:i32,
+    article_name:String,
+    article_content:String,
+}
+
+// Your handler code (as you last provided it) remains the same:
+async fn articles_update_api_route_handler
+(
+    Extension(pool):Extension<Pool>,
+    Json(payload): Json<ArticleUpdateRequest>,
+) -> Json<EduardoosArticleUpdate>
+{
+    if payload.access_key != "addddd" {
+        return Json(EduardoosArticleUpdate{
+            article_series_id:0,
+            article_name:String::new(),
+            article_content:String::from("The access Key was incorrect.")
+        })
+    }
+
+    match api::update_article_by_id_if_possible(
+                &pool,
+                &payload.id,
+                &payload.article_series_id,
+                &payload.article_name,
+                &payload.article_content,
+    )
+    .await
+    {
+        Ok(article)=>{
+            Json(article)
+        }
+        ,
+        Err(e)=>{
+            Json(EduardoosArticleUpdate{
+                article_series_id:0,
+                article_name:String::new(),
+                article_content:e.to_string(), // e.to_string() from ApiError
+            })
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 async fn database_exists_handler(Extension(pool):Extension<Pool>,)->Json<DatabaseCheckResult>{
     let db_name_to_check = "eduardoosserver".to_string();
