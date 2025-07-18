@@ -85,6 +85,16 @@ pub fn page_header_001(root_path:&str,component_id:&str) -> String {
                             Reflecting on the world of danger
                         </a>
                     </li>
+                    <li
+                    class="{COMPONENT_NAME}_navigation_list_item"
+                    >
+                        <a
+                        class="{COMPONENT_NAME}_navigation_list_item_anchor"
+                        href="{ROOT_PATH}articles/create"
+                        >
+                            Create Aritcles
+                        </a>
+                    </li>
                 </ol>
             </nav>
 
@@ -95,6 +105,6 @@ pub fn page_header_001(root_path:&str,component_id:&str) -> String {
         "#,
         COMPONENT_NAME=component_name,
         COMPONENT_ID=component_id,
-        ROOT_PATH=full_root_path
+        ROOT_PATH=root_path
     )   
 }

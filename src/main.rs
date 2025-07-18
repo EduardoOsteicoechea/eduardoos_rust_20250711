@@ -34,6 +34,7 @@ use serde::{Serialize, Deserialize};
 
 use web_pages::page_home::retrieve_page_html_string;
 use webpages::page_reflecting_on_the_world_of_danger_001::page_reflecting_on_the_world_of_danger_001_html;
+use webpages::page_articles_create::page_articles_create_html;
 
 
 
@@ -74,11 +75,15 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     let app = Router::new()
         .route("/", get(page_home_handler))
+        .route("/reflecting_on_the_world_of_danger",get(reflecting_on_the_world_of_danger_001_route_handler))
+        .route("/articles/create",get(articles_create_route_handler))
+
         .route("/api/database_exists",get(database_exists_handler))
         .route("/api/create_todo_tasks_table",get(create_todo_tasks_table_handler))
         .route("/api/view_all_todo_tasks",get(view_all_todo_tasks_route_handler))
         .route("/api/create_todo_task",post(create_todo_task_route_handler))
-        .route("/reflecting_on_the_world_of_danger",get(reflecting_on_the_world_of_danger_001_route_handler))
+
+
         .route("/api/articles/:id",get(articles_api_route_handler))
         .route("/api/articles/update",post(articles_update_api_route_handler))
         
@@ -140,6 +145,11 @@ async fn page_home_handler() -> Html<String>{
 
 async fn reflecting_on_the_world_of_danger_001_route_handler() -> Html<String>{
     let a = page_reflecting_on_the_world_of_danger_001_html().await;
+    Html(a)
+}
+
+async fn articles_create_route_handler() -> Html<String>{
+    let a =page_articles_create_html().await;
     Html(a)
 }
 
