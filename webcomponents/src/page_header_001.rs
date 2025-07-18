@@ -21,7 +21,7 @@ pub fn page_header_001(root_path:&str,component_id:&str) -> String {
                     <img 
                     id=""
                     class="{COMPONENT_NAME}_logo_anchor_container_image_container_image"
-                    src="personal_photo_white_720x720.webp"
+                    src="/personal_photo_white_720x720.webp"
                     alt="Eduardo's photo"
                     height="100%"
                     >
@@ -68,7 +68,7 @@ pub fn page_header_001(root_path:&str,component_id:&str) -> String {
                         <a
                         id=""
                         class="{COMPONENT_NAME}_navigation_list_item_anchor"
-                        href="{ROOT_PATH}"
+                        href="/{ROOT_PATH}"
                         >
                             Home
                         </a>
@@ -80,7 +80,7 @@ pub fn page_header_001(root_path:&str,component_id:&str) -> String {
                         <a
                         id=""
                         class="{COMPONENT_NAME}_navigation_list_item_anchor"
-                        href="{ROOT_PATH}reflecting_on_the_world_of_danger"
+                        href="/{ROOT_PATH}reflecting_on_the_world_of_danger"
                         >
                             Reflecting on the world of danger
                         </a>
@@ -90,7 +90,7 @@ pub fn page_header_001(root_path:&str,component_id:&str) -> String {
                     >
                         <a
                         class="{COMPONENT_NAME}_navigation_list_item_anchor"
-                        href="{ROOT_PATH}articles/create"
+                        href="/{ROOT_PATH}articles/create"
                         >
                             Create Aritcles
                         </a>

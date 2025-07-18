@@ -44,11 +44,11 @@ fn link_or_script_tag_generator
     for file_name in files_names 
     {
         let attributes = if is_css {
-            format!(r#" rel="stylesheet" href="{}.css""#,file_name)
+            format!(r#" rel="stylesheet" href="/{}.css""#,file_name)
         }
         else
         {
-            format!(r#" src="{}.js""#,file_name)
+            format!(r#" src="/{}.js""#,file_name)
         };
 
         result.push_str(format!(r#"<{}{}>{}"#,tag,attributes,closing).as_str());
