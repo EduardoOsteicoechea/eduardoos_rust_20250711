@@ -23,7 +23,6 @@ pub const PAGE_BOTTOM: &'static str = r#"
 fn link_or_script_tag_generator
 (
     is_css:bool,
-    root_path:&str,
     files_names:Vec<&str>,
 )
 -> String 
@@ -59,7 +58,6 @@ fn link_or_script_tag_generator
 
 pub async fn page_generator
 (
-    root_path :&str,
     page_title :&str,
     css_files_names :Vec<&str>,
     js_head_files_names :Vec<&str>,
@@ -68,19 +66,17 @@ pub async fn page_generator
 )
 -> String 
 {
-    let page_header:String = page_header_001(root_path,page_title);
+    let page_header:String = page_header_001(page_title);
 
     let page_title_tag:String = format!(r#"<title>{}</title>"#,page_title);
 
     let css_tipical_tags:String = link_or_script_tag_generator(
         true,
-        root_path,
         vec!["page_header_001","global_styles"],
     );
 
     let js_head_tipical_tags:String = link_or_script_tag_generator(
         false,
-        root_path,
         vec!["global"],
     );
 
@@ -89,19 +85,19 @@ pub async fn page_generator
     let css_current_page_tags:String = if css_files_names.len() == 0 {
         String::new()
     } else {
-        link_or_script_tag_generator(true,root_path,css_files_names)
+        link_or_script_tag_generator(true,css_files_names)
     };    
 
     let js_head_current_page_tags:String = if js_head_files_names.len() == 0 {
         String::new()
     } else {
-        link_or_script_tag_generator(false,root_path,js_head_files_names)
+        link_or_script_tag_generator(false,js_head_files_names)
     };
 
     let js_bottom_current_page_tags:String = if js_bottom_files_names.len() == 0 {
         String::new()
     } else {
-        link_or_script_tag_generator(false,root_path,js_bottom_files_names)
+        link_or_script_tag_generator(false,js_bottom_files_names)
     };
 
     format!(

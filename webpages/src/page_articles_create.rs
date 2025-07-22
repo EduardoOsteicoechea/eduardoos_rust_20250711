@@ -4,7 +4,6 @@ use crate::template::page_generator;
 
 pub async fn page_articles_create_html()->String{
 
-    let root_folder:&str = "../../";
     let page_title:&str = "Articles Creator";
     let page_identifier_string:&str = "page_articles_create";
     let css_files_names:Vec<&str> = vec![
@@ -17,13 +16,61 @@ pub async fn page_articles_create_html()->String{
 
     let page_main_content:&str = r#"
     <div id="page_authentication_screen">
-	<input id="page_authentication_key" type="text">
-	<button id="page_authentication_button">Authenticate</button>
+
+        <div
+        class="page_authentication_screen_heading_container"
+        >
+            <h2
+            class="page_authentication_screen_heading"
+            >
+                Sign in to create articles
+            </h2>
+        </div>
+
+        <div>
+            <div class="page_authentication_screen_input_label_container">
+                <label 
+                for="page_authentication_username_input"
+                class="page_authentication_screen_label"
+                >
+                    Username
+                </label>
+        	<input 
+                id="page_authentication_username_input" 
+                class="page_authentication_screen_input"
+                type="text"
+                >
+	    </div>
+
+            <div 
+            class="page_authentication_screen_input_label_container"
+            >
+                <label 
+                for="page_authentication_password_input"
+                class="page_authentication_screen_label"
+                >
+                    Password
+                </label>
+                <input 
+                id="page_authentication_password_input" 
+                class="page_authentication_screen_input"
+                type="password"
+                >
+            </div>
+        </div>
+
+	<button 
+        id="page_authentication_authenticate_button" 
+        class="page_authentication_screen_autentication_button"
+        type="button"
+        >
+            Authenticate
+        </button>
+        
     </div>    
     "#;
 
     page_generator(
-        root_folder,
         page_title,
         css_files_names,
         js_head_files_names,

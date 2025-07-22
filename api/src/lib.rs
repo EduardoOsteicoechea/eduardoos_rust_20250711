@@ -7,6 +7,11 @@ use std::fmt;
 use chrono::{DateTime,Utc};
 
 
+pub mod authentication_simple_authentication;
+pub use authentication_simple_authentication::{SimpleAuthenticationRequest, SimpleAuthenticationResponse};
+
+
+
 // Define a custom error type to encompass all possible errors
 #[derive(Debug)]
 pub enum ApiError {

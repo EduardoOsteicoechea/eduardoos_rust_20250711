@@ -8,21 +8,15 @@ use axum::{
 use std::{net::SocketAddr, path::PathBuf, env};
 use axum_server::tls_rustls::RustlsConfig;
 use api::{
-//    check_database_exists,
-  //  create_todo_tasks_table,
-//    read_all_todo_tasks,
-//    insert_todo_task,
     DatabaseCheckResult,
-//    ApiError,
-//    TodoTask,
     NewTodoTask,
     EduardoosArticle,
     EduardoosArticleUpdate,
+    SimpleAuthenticationRequest,
+    SimpleAuthenticationResponse,
 };
-//use deadpool_postgres::{Pool,Manager,Config,Runtime};
 use deadpool_postgres::{Pool,Manager,Runtime};
 use tokio_postgres::NoTls;
-//use std::fmt;
 use serde_json;
 use tower_http::services::ServeDir;
 use axum::http::StatusCode;
@@ -32,7 +26,7 @@ use serde::{Serialize, Deserialize};
 
 
 
-use web_pages::page_home::retrieve_page_html_string;
+use webpages::page_home::retrieve_page_html_string;
 use webpages::page_reflecting_on_the_world_of_danger_001::page_reflecting_on_the_world_of_danger_001_html;
 use webpages::page_articles_create::page_articles_create_html;
 
@@ -77,6 +71,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .route("/", get(page_home_handler))
         .route("/reflecting_on_the_world_of_danger",get(reflecting_on_the_world_of_danger_001_route_handler))
         .route("/articles/create",get(articles_create_route_handler))
+
+        .route("/api/simple_authentication",post(simple_authentication_route_handler))
 
         .route("/api/database_exists",get(database_exists_handler))
         .route("/api/create_todo_tasks_table",get(create_todo_tasks_table_handler))
@@ -153,6 +149,32 @@ async fn articles_create_route_handler() -> Html<String>{
     Html(a)
 }
 
+async fn simple_authentication_route_handler
+(
+    Extension(pool):Extension<Pool>,
+    Json(payload): Json<SimpleAuthenticationRequest>
+)
+-> Json<SimpleAuthenticationResponse>
+{
+    match api::authentication_simple_authentication::authentication_simple_authentication
+    (
+        &pool,
+        payload.username,
+        payload.password
+    )
+    .await
+    {
+        Ok(response)=>
+        {
+            Json(response)
+        },
+        Err(error)=>
+        {
+            Json(SimpleAuthenticationResponse{authenticated:false, message:error.to_string()})
+        }
+    }
+}
+
 async fn articles_api_route_handler(Extension(pool):Extension<Pool>, Path(id):Path<i32>) -> Json<EduardoosArticle> {
     let article_id_to_query = id;
     match api::get_article_by_id_if_possible(&pool, &article_id_to_query).await{
@@ -170,7 +192,7 @@ async fn articles_api_route_handler(Extension(pool):Extension<Pool>, Path(id):Pa
     }
 }
 
-#[derive(Debug, Serialize, Deserialize)] // <--- ADD THIS LINE
+#[derive(Debug, Serialize, Deserialize)]
 struct ArticleUpdateRequest{
     access_key:String,
     id:i32,
@@ -178,8 +200,6 @@ struct ArticleUpdateRequest{
     article_name:String,
     article_content:String,
 }
-
-// Your handler code (as you last provided it) remains the same:
 async fn articles_update_api_route_handler
 (
     Extension(pool):Extension<Pool>,

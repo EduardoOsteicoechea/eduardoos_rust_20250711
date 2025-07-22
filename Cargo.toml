@@ -5,7 +5,7 @@ edition = "2024"
 
 [workspace]
 members = [
-        "web_pages",
+#        "web_pages",
         "api", "webcomponents",
 	"webpages"
 ]
@@ -23,7 +23,7 @@ serde = { version = "1.0.140", features = ["derive"] }
 
 tower-http = { version = "0.5", features = ["fs"] }
 
-web_pages = {path = "web_pages"}
+#web_pages = {path = "web_pages"}
 webpages = {path="webpages"}
 api = {path="api"}
 

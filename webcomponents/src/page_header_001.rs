@@ -1,6 +1,7 @@
-pub fn page_header_001(root_path:&str,component_id:&str) -> String {
+pub fn page_header_001(component_id:&str) -> String {
+
     let component_name = "page_header_001";
-    let full_root_path = format!("https://eduardoos.com/{}",root_path);
+
     format!(
         r#"
 
@@ -12,7 +13,7 @@ pub fn page_header_001(root_path:&str,component_id:&str) -> String {
             <a
             id=""
             class="{COMPONENT_NAME}_logo_anchor_container"
-            href="https://eduardoos.com/"
+            href="/"
             >
                 <div
                 id=""
@@ -68,7 +69,7 @@ pub fn page_header_001(root_path:&str,component_id:&str) -> String {
                         <a
                         id=""
                         class="{COMPONENT_NAME}_navigation_list_item_anchor"
-                        href="/{ROOT_PATH}"
+                        href="/"
                         >
                             Home
                         </a>
@@ -80,7 +81,7 @@ pub fn page_header_001(root_path:&str,component_id:&str) -> String {
                         <a
                         id=""
                         class="{COMPONENT_NAME}_navigation_list_item_anchor"
-                        href="/{ROOT_PATH}reflecting_on_the_world_of_danger"
+                        href="/reflecting_on_the_world_of_danger"
                         >
                             Reflecting on the world of danger
                         </a>
@@ -90,7 +91,7 @@ pub fn page_header_001(root_path:&str,component_id:&str) -> String {
                     >
                         <a
                         class="{COMPONENT_NAME}_navigation_list_item_anchor"
-                        href="/{ROOT_PATH}articles/create"
+                        href="/articles/create"
                         >
                             Create Aritcles
                         </a>
@@ -101,10 +102,9 @@ pub fn page_header_001(root_path:&str,component_id:&str) -> String {
 
 
         </div>
-        <script src="page_header_001_activator_button.js"></script>
+        <script src="/page_header_001_activator_button.js"></script>
         "#,
         COMPONENT_NAME=component_name,
-        COMPONENT_ID=component_id,
-        ROOT_PATH=root_path
+        COMPONENT_ID=component_id
     )   
 }

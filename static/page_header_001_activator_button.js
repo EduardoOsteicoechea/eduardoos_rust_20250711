@@ -1,1 +1,1 @@
-//alert("Greetings from the header")
+console.log("Greetings from the header button activator")

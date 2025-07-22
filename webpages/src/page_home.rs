@@ -4,7 +4,7 @@ use webcomponents::page_header_001::page_header_001;
 
 pub async fn retrieve_page_html_string() -> String {
 
-    let page_header = page_header_001("","home");
+    let page_header = page_header_001("home");
 
     let css_files_names: [&str;2] = [
         "page_header_001",
