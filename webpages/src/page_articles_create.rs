@@ -15,58 +15,55 @@ pub async fn page_articles_create_html()->String{
     ];
 
     let page_main_content:&str = r#"
-    <div id="page_authentication_screen">
+    <div 
+    id="authentication_screen"
+    class="authentication_screen"    
+    >
 
         <div
-        class="page_authentication_screen_heading_container"
+        class="authentication_labels_container"
         >
-            <h2
-            class="page_authentication_screen_heading"
+            <label 
+            for="authentication_username_input"
+            id="authentication_password_label"
+            class="authentication_screen_label authentication_screen_control"
             >
-                Sign in to create articles
-            </h2>
+                Username
+            </label>
+        
+            <label 
+            for="authentication_password_input"
+            id="authentication_password_label"
+            class="authentication_screen_label authentication_screen_control"
+            >
+                Password
+            </label>
         </div>
 
-        <div>
-            <div class="page_authentication_screen_input_label_container">
-                <label 
-                for="page_authentication_username_input"
-                class="page_authentication_screen_label"
-                >
-                    Username
-                </label>
-        	<input 
-                id="page_authentication_username_input" 
-                class="page_authentication_screen_input"
-                type="text"
-                >
-	    </div>
-
-            <div 
-            class="page_authentication_screen_input_label_container"
+        <div
+        class="authentication_inputs_container"
+        >
+            <input
+            id="authentication_username_input"
+            class="authentication_screen_input authentication_screen_control"
+            type="text"
             >
-                <label 
-                for="page_authentication_password_input"
-                class="page_authentication_screen_label"
-                >
-                    Password
-                </label>
-                <input 
-                id="page_authentication_password_input" 
-                class="page_authentication_screen_input"
-                type="password"
-                >
-            </div>
+
+            <input 
+            id="authentication_password_input" 
+            class="authentication_screen_input authentication_screen_control"
+            type="password"
+            >
+
         </div>
 
-	<button 
-        id="page_authentication_authenticate_button" 
-        class="page_authentication_screen_autentication_button"
+        <button
+        id="authentication_authenticate_button"
+        class="authentication_screen_autentication_button authentication_screen_control"
         type="button"
         >
-            Authenticate
+            Sign In
         </button>
-        
     </div>    
     "#;
 

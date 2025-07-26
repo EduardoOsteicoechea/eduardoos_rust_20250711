@@ -112,12 +112,12 @@ pub async fn page_generator
         {JS_HEAD_CURRENT_PAGE_TAGS}
 
         {PAGE_CONTENT}
-        {PAGE_HEADER}
         {PAGE_MAIN_CONTENT}
 
         {JS_BOTTOM_TIPICAL_TAGS}
         {JS_BOTTOM_CURRENT_PAGE_TAGS}
 
+        {PAGE_HEADER}
         {PAGE_BOTTOM}
         "#,
         PAGE_TOP=PAGE_TOP,

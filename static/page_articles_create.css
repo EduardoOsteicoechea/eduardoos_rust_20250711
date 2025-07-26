@@ -1,0 +1,63 @@
+.authentication_screen{
+	display:grid;
+	grid-template-rows:auto 100px 20px 40px auto;
+	grid-template-columns: 20px 30% 0px auto 20px;
+
+	width:100svw;
+	height:100svh;
+	position:absolute;
+	top:0px;
+	left:0px;
+	background:var(--cb);
+	z-index:10000;
+}
+
+.authentication_screen_control{
+	display:flex;
+	align-items:center;
+	height:40px;
+	border-radius:0;
+	border:none;
+	font-size:14px;
+}
+
+.authentication_labels_container{
+	display:flex;
+	flex-direction:column;
+	align-items:end;
+	grid-row:2;
+	grid-column:2;
+	gap:20px;
+}
+.authentication_screen_label{
+	display:flex;
+	justify-content:center;
+	background:var(--cg_4);
+	width:100%;
+	border-bottom: solid 1px var(--cg_4);
+	color: var(--cb);
+	font-weight:700;
+}
+
+.authentication_inputs_container{
+
+        display:flex;
+        flex-direction:column;
+	grid-row:2;
+	grid-column:4;
+        gap:20px;
+}
+.authentication_screen_input{
+	padding: 0 0 0 10px;
+	border-bottom: solid 1px var(--cg_4);
+}
+
+.authentication_screen_autentication_button{
+	justify-content:center;
+	border:none;
+	background:var(--cf);;
+	color:var(--cb);
+	grid-column:2;
+	grid-row:4;
+	font-weight:900;
+}
